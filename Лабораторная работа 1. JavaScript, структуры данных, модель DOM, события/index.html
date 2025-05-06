@@ -1,0 +1,55 @@
+<head>
+    <title>Удаление столбца таблицы</title>
+</head>
+<body>
+    <h3>Топ браузеров</h3>
+    <table id="test">
+        <tr>
+            <th>Браузеры</th>
+            <th>Доля рынка</th>
+            <th>Имена</th>
+        </tr>
+        <tr>
+            <td>Google Chrome</td>
+            <td>63.33%</td>
+            <td>Кирилл</td>
+        </tr>
+        <tr>
+            <td>Apple Safari</td>
+            <td>13.13%</td>
+            <td>Витя</td>
+        </tr>
+        <tr>
+            <td>Microsoft Edge</td>
+            <td>10.46%</td>
+            <td>Катя</td>
+        </tr>
+        <tr>
+            <td>Mozilla Firefox</td>
+            <td>5.96%</td>
+            <td>Оля</td>
+        </tr>
+    </table>
+    <br>
+    <button onclick="changeTable('test', 2)">Удалить столбец</button>
+    <script>
+        function changeTable(idTable, nTable){
+            const table = document.getElementById(idTable);
+            if (!table) return;
+            if (nTable > 0){
+                if (nTable < table.rows[0].cells.length){
+                    for (let row of table.rows) {
+                        if (row.cells.length > nTable) {
+                            row.deleteCell(nTable);
+                        } 
+                    }
+                } else{
+                    alert("Такого столба нет!");
+                }
+            } else {
+                alert("Введено отрицаетльное число!");
+            }
+        }
+    </script>
+</body>
+</html>

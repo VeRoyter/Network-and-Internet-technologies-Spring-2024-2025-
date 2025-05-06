@@ -1,0 +1,446 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <style>
+            .hidden {
+                display: none;
+            }
+            .error {
+                border: 2px solid red;
+            }
+            .error-message {
+                color: red;
+                font-size: 0.8em;
+            }
+            .input-group {
+                margin: 5px 0;
+            }
+            #results {
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="compCalculator">
+            <p>Выберите тип</p>
+            <div class="input-group">
+                <label>Форма представления:</label>
+                <select id="formType">
+                    <option value="algebraic">Алгебраическая</option>
+                    <option value="exponential">Показательная</option>
+                </select>
+                <button onclick="updateInputs()">Показать</button>
+            </div>
+        </div>
+
+        <div class="complex-input" id="num1Alg">
+            <p>Первое число</p>
+            <div class="input-group">
+                <label>Действительная часть:</label>
+                <input type="number" id="num1a" step="any">
+            </div>
+            +
+            <div class="input-group">
+                <label>Мнимая часть:</label>
+                <input type="number" id="num1b" step="any">
+            </div>
+        </div>
+
+        <div class="complex-input" id="num2Alg">
+            <p>Второе число</p>
+            <div class="input-group">
+                <label>Действительная часть:</label>
+                <input type="number" id="num2a" step="any">
+            </div>
+            +
+            <div class="input-group">
+                <label>Мнимая часть:</label>
+                <input type="number" id="num2b" step="any">
+            </div>
+        </div>
+
+        <div class="complex-input hidden" id="num1Pok">
+            <p>Первое число</p>
+            <div class="input-group">
+                <label>Модуль:</label>
+                <input type="number" id="num1r" step="any">
+            </div>
+            e^
+            <div class="input-group">
+                <label>Аргумент:</label>
+                <input type="number" id="num1phi" step="any">
+            </div>
+        </div>
+
+        <div class="complex-input hidden" id="num2Pok">
+            <p>Второе число</p>
+            <div class="input-group">
+                <label>Модуль:</label>
+                <input type="number" id="num2r" step="any">
+            </div>
+            e^
+            <div class="input-group">
+                <label>Аргумент:</label>
+                <input type="number" id="num2phi" step="any">
+            </div>
+        </div>
+
+        <div class="operations">
+            <label><input type="checkbox" id="sum"> Сумма</label>
+            <label><input type="checkbox" id="difference"> Разность</label>
+            <label><input type="checkbox" id="product"> Произведение</label>
+        </div>
+        
+        <button onclick="calculate()">Вычислить</button>
+        <button onclick="clearAll()">Очистить</button>
+        
+        <div id="results"></div>
+
+    <script>
+    function toAlgebraic(r, phi) {
+        return {
+            a: r * Math.cos(phi),
+            b: r * Math.sin(phi)
+        };
+    }
+
+    function toExponential(a, b) {
+        return {
+            r: Math.sqrt(a*a + b*b),
+            phi: Math.atan2(b, a)
+        };
+    }
+
+    // document.querySelectorAll('input').forEach(input => {
+    //     input.addEventListener('focus', function() {
+    //         const parent = this.parentElement;
+    //         parent.classList.remove('error');
+    //         const errorMsg = parent.querySelector('.error-message');
+    //         if (errorMsg) errorMsg.remove();
+    //     });
+    // });
+
+    // function calculate() {
+    //     clearErrors();
+    //     const formType = document.getElementById('formType').value;
+    //     const isAlgebraic = formType === 'algebraic';
+    //     let num1, num2;
+
+    //     try {
+    //         if (isAlgebraic) {
+    //             const a1 = parseFloat(document.getElementById('num1a').value);
+    //             const b1 = parseFloat(document.getElementById('num1b').value);
+    //             const a2 = parseFloat(document.getElementById('num2a').value);
+    //             const b2 = parseFloat(document.getElementById('num2b').value);
+
+    //             if (isNaN(a1) &&isNaN(b1) && isNaN(a2) && isNaN(b2)) {
+    //                 showError('num1a', 'Заполните оба поля первого числа');
+    //                 showError('num1b', 'Заполните оба поля первого числа');
+    //                 showError('num2a', 'Заполните оба поля второго числа');
+    //                 showError('num2b', 'Заполните оба поля второго числа');
+    //                 return;
+    //             }
+    //             if (isNaN(a1)) {
+    //                 showError('num1a', 'Заполните оба поля первого числа');
+    //                 return;
+    //             }
+    //             if (isNaN(b1)){
+    //                 showError('num1b', 'Заполните оба поля первого числа');
+    //                 return;
+    //             }
+    //             if (isNaN(a2)) {
+    //                 showError('num2a', 'Заполните оба поля второго числа');
+    //                 return;
+    //             }
+    //             if (isNaN(b2)){
+    //                 showError('num2b', 'Заполните оба поля второго числа');
+    //                 return;
+    //             }
+    //             num1 = { a: a1, b: b1 };
+    //             num2 = { a: a2, b: b2 };
+    //         } else {
+    //             const r1 = parseFloat(document.getElementById('num1r').value);
+    //             const phi1 = parseFloat(document.getElementById('num1phi').value);
+    //             const r2 = parseFloat(document.getElementById('num2r').value);
+    //             const phi2 = parseFloat(document.getElementById('num2phi').value);
+
+    //             if (isNaN(r1) || isNaN(phi1)) {
+    //                 showError('num1r', 'Заполните оба поля первого числа');
+    //                 return;
+    //             }
+    //             if (isNaN(r2) || isNaN(phi2)) {
+    //                 showError('num2r', 'Заполните оба поля второго числа');
+    //                 return;
+    //             }
+    //             if (r1 < 0 || r2 < 0) {
+    //                 showError('num1r', 'Модуль должен быть ≥ 0');
+    //                 return;
+    //             }
+    //             num1 = toAlgebraic(r1, phi1);
+    //             num2 = toAlgebraic(r2, phi2);
+    //         }
+
+    //         const sumChecked = document.getElementById('sum').checked;
+    //         const diffChecked = document.getElementById('difference').checked;
+    //         const prodChecked = document.getElementById('product').checked;
+
+    //         if (!sumChecked && !diffChecked && !prodChecked) {
+    //             showError('operations', 'Выберите хотя бы одну операцию');
+    //             return;
+    //         }
+
+    //         const results = {};
+            
+    //         if (sumChecked) {
+    //             const a = num1.a + num2.a;
+    //             const b = num1.b + num2.b;
+    //             results.sum = isAlgebraic ? { a, b } : toExponential(a, b);
+    //         }
+    //         if (diffChecked) {
+    //             const a = num1.a - num2.a;
+    //             const b = num1.b - num2.b;
+    //             results.difference = isAlgebraic ? { a, b } : toExponential(a, b);
+    //         }
+    //         if (prodChecked) {
+    //             const a = num1.a * num2.a - num1.b * num2.b;
+    //             const b = num1.a * num2.b + num1.b * num2.a;
+    //             results.product = isAlgebraic ? { a, b } : toExponential(a, b);
+    //         }
+
+    //         displayResults(results, isAlgebraic);
+    //     } catch (error) {
+    //         showError('general', 'Ошибка вычислений');
+    //     }
+    // }
+
+
+    function calculate() {
+        clearErrors();
+        const formType = document.getElementById('formType').value;
+        const isAlgebraic = formType === 'algebraic';
+        let num1, num2;
+        let hasErrors = false;
+
+        try {
+            if (isAlgebraic) {
+                const checkAlgebraicNumber = (prefix) => {
+                    const a = parseFloat(document.getElementById(prefix + 'a').value);
+                    const b = parseFloat(document.getElementById(prefix + 'b').value);
+                    let hasLocalErrors = false;
+
+                    if (isNaN(a)) {
+                        showError(prefix + 'a', 'Заполните поле');
+                        hasLocalErrors = true;
+                    }
+
+                    if (isNaN(b)) {
+                        showError(prefix + 'b', 'Заполните поле');
+                        hasLocalErrors = true;
+                    }
+
+                    if (hasLocalErrors) {
+                        hasErrors = true;
+                        return null;
+                    }
+                    return { a, b };
+                };
+
+                num1 = checkAlgebraicNumber('num1');
+                num2 = checkAlgebraicNumber('num2');
+
+            } else {
+                const checkExponentialNumber = (prefix) => {
+                    const r = parseFloat(document.getElementById(prefix + 'r').value);
+                    const phi = parseFloat(document.getElementById(prefix + 'phi').value);
+                    let hasLocalErrors = false;
+
+                    if (isNaN(r)) {
+                        showError(prefix + 'r', 'Заполните модуль');
+                        hasLocalErrors = true;
+                    } else if (r < 0) {
+                        showError(prefix + 'r', 'Модуль ≥ 0');
+                        hasLocalErrors = true;
+                    }
+
+                    if (isNaN(phi)) {
+                        showError(prefix + 'phi', 'Заполните аргумент');
+                        hasLocalErrors = true;
+                    }
+
+                    if (hasLocalErrors) {
+                        hasErrors = true;
+                        return null;
+                    }
+                    return toAlgebraic(r, phi);
+                };
+
+                num1 = checkExponentialNumber('num1');
+                num2 = checkExponentialNumber('num2');
+            }
+
+            if (hasErrors) return;
+
+            const sumChecked = document.getElementById('sum').checked;
+            const diffChecked = document.getElementById('difference').checked;
+            const prodChecked = document.getElementById('product').checked;
+
+            if (!sumChecked && !diffChecked && !prodChecked) {
+                showError('operations', 'Выберите минимум одну операцию');
+                return;
+            }
+
+            const results = {};
+
+            if (sumChecked) {
+                const a = num1.a + num2.a;
+                const b = num1.b + num2.b;
+                results.sum = isAlgebraic 
+                    ? { a, b } 
+                    : toExponential(a, b);
+            }
+
+            if (diffChecked) {
+                const a = num1.a - num2.a;
+                const b = num1.b - num2.b;
+                results.difference = isAlgebraic 
+                    ? { a, b } 
+                    : toExponential(a, b);
+            }
+
+            if (prodChecked) {
+                const a = num1.a * num2.a - num1.b * num2.b;
+                const b = num1.a * num2.b + num1.b * num2.a;
+                results.product = isAlgebraic 
+                    ? { a, b } 
+                    : toExponential(a, b);
+            }
+
+            displayResults(results, isAlgebraic);
+
+        } catch (error) {
+            showError('general', 'Ошибка вычислений: ' + error.message);
+        }
+    }
+
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('focus', function() {
+            const parent = this.parentElement;
+            parent.classList.remove('error');
+            const errorMsg = parent.querySelector('.error-message');
+            if (errorMsg) errorMsg.remove();
+        });
+    });
+
+    function displayResults(results, isAlgebraic) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '';
+        
+        for (const [op, value] of Object.entries(results)) {
+            const opNames = {
+                sum: 'Сумма',
+                difference: 'Разность',
+                product: 'Произведение'
+            };
+            let result;
+            if (isAlgebraic) {
+                result = `${value.a.toFixed(2)} + ${value.b.toFixed(2)}i`;
+            } else {
+                result = `${value.r.toFixed(2)}e^(i${value.phi.toFixed(2)})`;
+            }
+            const p = document.createElement('p');
+            p.textContent = `${opNames[op]}: ${result}`;
+            resultsDiv.appendChild(p);
+        }
+    }
+
+    function clearAll() {
+        document.querySelectorAll('input').forEach(input => input.value = '');
+        document.getElementById('results').innerHTML = '';
+        clearErrors();
+    }
+
+    function showError(fieldId, message) {
+        let element;
+        if (fieldId.startsWith('num1') || fieldId.startsWith('num2')) {
+            element = document.getElementById(fieldId).parentElement;
+        } else if (fieldId === 'operations') {
+            element = document.querySelector('.operations');
+        }
+        if (element) {
+            element.classList.add('error');
+            const errorSpan = document.createElement('span');
+            errorSpan.className = 'error-message';
+            errorSpan.textContent = message;
+            element.appendChild(errorSpan);
+        }
+    }
+
+    function clearErrors() {
+        document.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+        document.querySelectorAll('.error-message').forEach(el => el.remove());
+    }
+
+    function updateInputs() {
+        const showAlgebraic = document.getElementById('formType').value === 'algebraic';
+        
+        const algElements = [
+            document.getElementById('num1Alg'),
+            document.getElementById('num2Alg')
+        ];
+        
+        const expElements = [
+            document.getElementById('num1Pok'),
+            document.getElementById('num2Pok')
+        ];
+
+        algElements.forEach(element => {
+            if (showAlgebraic) {
+                element.classList.remove('hidden');
+            } else {
+                element.classList.add('hidden');
+            }
+        });
+
+        expElements.forEach(element => {
+            if (showAlgebraic) {
+                element.classList.add('hidden');
+            } else {
+                element.classList.remove('hidden');
+            }
+        });
+    }
+    </script>
+    </body>
+</html>
+
+<script>
+    //задание 1
+    let ahref = d3.selectAll('ul.list li').nodes();
+    let names = Array.from(new Set(ahref.map(item => item.textContent)));
+    alert(names);
+    //Задание 2:
+    d3.selectAll("div").each(function() {
+        d3.select(this)
+        .select(":first-child")
+        .classed("active", true);
+    });
+    // Задание 3
+    const firstOL = d3.select("ol").node();
+        if (firstOL) {
+            const firstLiText = d3.select(firstOL).select("li").text().trim();
+            d3.selectAll("ol").each(function() {
+                d3.select(this).append("li").text(firstLiText);
+            });
+        }
+
+    // Задание 4
+    const allLiTexts = d3.selectAll("li").nodes().map(li => li.textContent.trim());
+    if (allLiTexts.length) {
+        d3.select("body").append("ul")
+            .selectAll("li")
+            .data(allLiTexts)
+            .enter()
+            .append("li")
+            .text(d => d);
+    }
+</script>
