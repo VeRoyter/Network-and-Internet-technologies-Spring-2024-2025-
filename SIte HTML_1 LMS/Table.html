@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<title>
+		Города мира
+	</title>
+	
+<body>
+<a href="index.html"><b>Грода</b></a><br>
+	<a href="Table.html"><b>Список городов мира</b></a>
+	<hr>
+<p>
+	<details>
+        <summary>График</summary>
+        <form>
+                <strong>Значение по оси OX</strong><br>
+                <label><input type="radio" name="axisX" value="0"> Страна</label><br>
+                <label><input type="radio" name="axisX" value="1"> Население</label><br>
+                <label><input type="radio" name="axisX" value="2"> Средний заработок</label><br>
+                
+            
+
+            
+               <strong>Результат</strong><br>
+                <label><input type="checkbox"> Максимальное население</label><br>
+                <label><input type="checkbox"> Минимальное население</label><br>
+                <label><input type="checkbox"> Максимальный заработок</label><br>
+                <label><input type="checkbox"> Минимальный заработок</label><br>
+				<input type="submit" value="Построить"><br>
+				Здесь будет график
+           </form>
+    </details>
+	<details>
+        <summary>Фильтр</summary>
+        <form>
+            <p><label>Название города: <input type="text"></label></p>
+            <p><label>Страна: <input type="text"></label></p>
+            <p>Население: от <input type="text"> до <input type="text"></p>
+            <p>Средний заработок: от <input type="text"> до <input type="text"></p>
+            <p>Средняя цена квартиры: от <input type="text"> до <input type="text"></p>
+            <p>Размер города(км²): от <input type="text"> до <input type="text"></p>
+            <p><input type="submit" value="Найти"></p>
+        </form>
+    </details>
+	<details>
+        <summary>Сортировка</summary>
+        <form>
+            <p><label>Первый уровень: 
+                <select name="1level">
+                    <option value="0">Название города</option>
+                    <option value="1">Страна</option>
+                    <option value="2">Население</option>
+                    <option value="3">Средний заработок</option>
+                    <option value="4">Средняя цена квартиры</option>
+                    <option value="5">Размер города (км²)</option>
+                </select>
+            </label>
+            по убыванию? <input type="checkbox" name="sort" value="0"></p>
+            
+            <p><label>Второй уровень: 
+                <select name="2level">
+                    <option value="0">Название города</option>
+                    <option value="1">Страна</option>
+                    <option value="2">Население</option>
+                    <option value="3">Средний заработок</option>
+                    <option value="4">Средняя цена квартиры</option>
+                    <option value="5">Размер города (км²)</option>
+                </select>
+            </label>
+            по убыванию? <input type="checkbox" name="sort" value="1"></p>
+    
+            <p><label>Третий уровень: 
+                <select name="3level">
+                    <option value="0">Название города</option>
+                    <option value="1">Страна</option>
+                    <option value="2">Население</option>
+                    <option value="3">Средний заработок</option>
+                    <option value="4">Средняя цена квартиры</option>
+                    <option value="5">Размер города (км²)</option>
+                </select>
+            </label>
+            по убыванию? <input type="checkbox" name="sort" value="2"></p>
+            
+            <p><input type="submit" value="Сортировать"></p>
+        </form>
+    </details>    
+<p> 
+    <table  border="1" cellspacing="0">
+        <tr>
+            <th>Название города</th>
+            <th>Страна</th>
+            <th>Население</th>
+            <th>Средний заработок</th>
+            <th>Средняя цена квартиры</th>
+            <th>Размер города (км²)</th>
+                <tr><td>Токио</td><td>Япония</td><td>37000000</td><td>40000</td><td>800000</td><td>2194</td></tr>
+                <tr><td>Дели</td><td>Индия</td><td>31000000</td><td>6000</td><td>100000</td><td>1484</td></tr>
+                <tr><td>Шанхай</td><td>Китай</td><td>26000000</td><td>12000</td><td>700000</td><td>6341</td></tr>
+                <tr><td>Сан-Паулу</td><td>Бразилия</td><td>22000000</td><td>8000</td><td>200000</td><td>1521</td></tr>
+                <tr><td>Мехико</td><td>Мексика</td><td>21000000</td><td>7000</td><td>150000</td><td>1485</td></tr>
+                <tr><td>Каир</td><td>Египет</td><td>20000000</td><td>5000</td><td>70000</td><td>606</td></tr>
+                <tr><td>Мумбаи</td><td>Индия</td><td>20000000</td><td>6000</td><td>80000</td><td>603</td></tr>
+                <tr><td>Пекин</td><td>Китай</td><td>20000000</td><td>15000</td><td>600000</td><td>16411</td></tr>
+                <tr><td>Осака</td><td>Япония</td><td>19000000</td><td>42000</td><td>850000</td><td>225</td></tr>
+                <tr><td>Нью-Йорк</td><td>США</td><td>18000000</td><td>55000</td><td>1200000</td><td>783</td></tr>
+                <tr><td>Дакка</td><td>Бангладеш</td><td>17000000</td><td>4000</td><td>50000</td><td>306</td></tr>
+                <tr><td>Карачи</td><td>Пакистан</td><td>16000000</td><td>4500</td><td>70000</td><td>591</td></tr>
+                <tr><td>Буэнос-Айрес</td><td>Аргентина</td><td>15000000</td><td>12000</td><td>250000</td><td>2681</td></tr>
+                <tr><td>Калькутта</td><td>Индия</td><td>14000000</td><td>5500</td><td>60000</td><td>185</td></tr>
+                <tr><td>Истанбул</td><td>Турция</td><td>15000000</td><td>10000</td><td>120000</td><td>5343</td></tr>
+                <tr><td>Рио-де-Жанейро</td><td>Бразилия</td><td>14000000</td><td>8500</td><td>230000</td><td>1221</td></tr>
+                <tr><td>Лагос</td><td>Нигерия</td><td>14000000</td><td>2500</td><td>40000</td><td>1171</td></tr>
+                <tr><td>Москва</td><td>Россия</td><td>12000000</td><td>20000</td><td>400000</td><td>2511</td></tr>
+                <tr><td>Шэньчжэнь</td><td>Китай</td><td>12000000</td><td>25000</td><td>650000</td><td>2050</td></tr>
+                <tr><td>Сеул</td><td>Южная Корея</td><td>10000000</td><td>35000</td><td>700000</td><td>605</td></tr>
+                <tr><td>Лос-Анджелес</td><td>США</td><td>10000000</td><td>50000</td><td>900000</td><td>1302</td></tr>
+                <tr><td>Париж</td><td>Франция</td><td>10000000</td><td>45000</td><td>850000</td><td>105</td></tr>
+                <tr><td>Богота</td><td>Колумбия</td><td>10000000</td><td>8000</td><td>100000</td><td>1587</td></tr>
+                <tr><td>Лондон</td><td>Великобритания</td><td>9000000</td><td>52000</td><td>900000</td><td>1572</td></tr>
+                <tr><td>Тегеран</td><td>Иран</td><td>9000000</td><td>6500</td><td>110000</td><td>730</td></tr>
+                <tr><td>Бангкок</td><td>Таиланд</td><td>8000000</td><td>10000</td><td>200000</td><td>1568</td></tr>
+                <tr><td>Хошимин</td><td>Вьетнам</td><td>8000000</td><td>4500</td><td>90000</td><td>2061</td></tr>
+                <tr><td>Ханой</td><td>Вьетнам</td><td>7000000</td><td>5000</td><td>80000</td><td>3324</td></tr>
+                <tr><td>Киншаса</td><td>Демократическая Республика Конго</td><td>8000000</td><td>2000</td><td>50000</td><td>9965</td></tr>
+                <tr><td>Мадрид</td><td>Испания</td><td>6000000</td><td>30000</td><td>400000</td><td>604</td></tr>
+                <tr><td>Сингапур</td><td>Сингапур</td><td>5700000</td><td>50000</td><td>1000000</td><td>728</td></tr>
+                <tr><td>Хайдарабад</td><td>Индия</td><td>10000000</td><td>5500</td><td>80000</td><td>625</td></tr>
+                <tr><td>Чунцин</td><td>Китай</td><td>30000000</td><td>10000</td><td>400000</td><td>82400</td></tr>
+                <tr><td>Гуанчжоу</td><td>Китай</td><td>13000000</td><td>20000</td><td>500000</td><td>7434</td></tr>
+                <tr><td>Торонто</td><td>Канада</td><td>6200000</td><td>45000</td><td>700000</td><td>630</td></tr>
+                <tr><td>Манила</td><td>Филиппины</td><td>14000000</td><td>7000</td><td>250000</td><td>619</td></tr>
+                <tr><td>Тяньцзинь</td><td>Китай</td><td>13000000</td><td>15000</td><td>400000</td><td>11760</td></tr>
+                <tr><td>Мельбурн</td><td>Австралия</td><td>5000000</td><td>60000</td><td>800000</td><td>9992</td></tr>
+                <tr><td>Чикаго</td><td>США</td><td>9200000</td><td>55000</td><td>300000</td><td>589</td></tr>
+                <tr><td>Сидней</td><td>Австралия</td><td>5300000</td><td>65000</td><td>900000</td><td>12368</td></tr>
+                <tr><td>Сан-Франциско</td><td>США</td><td>4400000</td><td>80000</td><td>1500000</td><td>600</td></tr>
+                <tr><td>Хьюстон</td><td>США</td><td>7100000</td><td>55000</td><td>350000</td><td>1651</td></tr>
+                <tr><td>Филадельфия</td><td>США</td><td>6000000</td><td>50000</td><td>250000</td><td>369</td></tr>
+                <tr><td>Касабланка</td><td>Марокко</td><td>3400000</td><td>3000</td><td>50000</td><td>324</td></tr>
+                <tr><td>Рим</td><td>Италия</td><td>4300000</td><td>35000</td><td>400000</td><td>1285</td></tr>
+                <tr><td>Милан</td><td>Италия</td><td>3200000</td><td>40000</td><td>450000</td><td>181</td></tr>
+                <tr><td>Гонконг</td><td>Китай</td><td>7400000</td><td>45000</td><td>1000000</td><td>2755</td></tr>
+                <tr><td>Сантьяго</td><td>Чили</td><td>6700000</td><td>9000</td><td>120000</td><td>641</td></tr>
+                <tr><td>Эр-Рияд</td><td>Саудовская Аравия</td><td>7800000</td><td>15000</td><td>500000</td><td>1913</td></tr>
+                <tr><td>Маракайбо</td><td>Венесуэла</td><td>3000000</td><td>2000</td><td>80000</td><td>393</td></tr>
+                <tr><td>Джакарта</td><td>Индонезия</td><td>10000000</td><td>7000</td><td>200000</td><td>661</td></tr>
+                <tr><td>Ташкент</td><td>Узбекистан</td><td>2600000</td><td>4000</td><td>60000</td><td>334</td></tr>
+                <tr><td>Бухарест</td><td>Румыния</td><td>1800000</td><td>5000</td><td>75000</td><td>228</td></tr>
+                <tr><td>Барселона</td><td>Испания</td><td>4900000</td><td>40000</td><td>500000</td><td>101</td></tr>
+                <tr><td>Йоханнесбург</td><td>ЮАР</td><td>5700000</td><td>8000</td><td>90000</td><td>1645</td></tr>
+                <tr><td>Абу-Даби</td><td>ОАЭ</td><td>1500000</td><td>40000</td><td>700000</td><td>972</td></tr>
+                <tr><td>Дубай</td><td>ОАЭ</td><td>3200000</td><td>70000</td><td>900000</td><td>4140</td></tr>
+                <tr><td>Мехико-Сити</td><td>Мексика</td><td>9200000</td><td>6000</td><td>150000</td><td>1400</td></tr>
+                <tr><td>Алжир</td><td>Алжир</td><td>3400000</td><td>3000</td><td>40000</td><td>363</td></tr>
+                <tr><td>Анкара</td><td>Турция</td><td>5500000</td><td>7000</td><td>200000</td><td>2450</td></tr>
+                <tr><td>Дублин</td><td>Ирландия</td><td>2000000</td><td>55000</td><td>800000</td><td>318</td></tr>
+                <tr><td>Брюссель</td><td>Бельгия</td><td>2100000</td><td>42000</td><td>600000</td><td>161</td></tr>
+                <tr><td>Киев</td><td>Украина</td><td>2800000</td><td>6000</td><td>100000</td><td>839</td></tr>
+                <tr><td>Кито</td><td>Эквадор</td><td>2800000</td><td>5000</td><td>80000</td><td>290</td></tr>
+                <tr><td>Лима</td><td>Перу</td><td>9200000</td><td>6000</td><td>150000</td><td>2672</td></tr>
+                <tr><td>Сан-Хосе</td><td>Коста-Рика</td><td>1600000</td><td>8000</td><td>100000</td><td>169</td></tr>
+                <tr><td>София</td><td>Болгария</td><td>1300000</td><td>4000</td><td>80000</td><td>492</td></tr>
+                <tr><td>Тбилиси</td><td>Грузия</td><td>1100000</td><td>3000</td><td>70000</td><td>726</td></tr>
+                <tr><td>Каракас</td><td>Венесуэла</td><td>3000000</td><td>2500</td><td>50000</td><td>777</td></tr>
+                <tr><td>Варшава</td><td>Польша</td><td>3100000</td><td>10000</td><td>200000</td><td>517</td></tr>
+                <tr><td>Афины</td><td>Греция</td><td>3200000</td><td>20000</td><td>350000</td><td>412</td></tr>
+                <tr><td>Минск</td><td>Беларусь</td><td>2000000</td><td>5000</td><td>70000</td><td>348</td></tr>
+                <tr><td>Касабланка</td><td>Марокко</td><td>3400000</td><td>3000</td><td>50000</td><td>324</td></tr>
+                <tr><td>Хартум</td><td>Судан</td><td>5300000</td><td>2500</td><td>30000</td><td>1005</td></tr>
+                <tr><td>Копенгаген</td><td>Дания</td><td>1200000</td><td>45000</td><td>600000</td><td>86</td></tr>
+                <tr><td>Будапешт</td><td>Венгрия</td><td>1800000</td><td>10000</td><td>200000</td><td>525</td></tr>
+                <tr><td>Баку</td><td>Азербайджан</td><td>2300000</td><td>4000</td><td>80000</td><td>2130</td></tr>
+                <tr><td>Скопье</td><td>Северная Македония</td><td>700000</td><td>3000</td><td>60000</td><td>185</td></tr>            
+    </table>
+    </body>
+</html>
