@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="CSS/style.css">
+  <script src="http://d3js.org/d3.v7.min.js"> </script>
+  <script src="JavaScript/data.js"></script>
+  <script src="JavaScript/main.js"></script>
+  <script src="JavaScript/table.js"></script>
+  <script src="JavaScript/chart.js"></script>
+</head>
+<body>   
+  <h3>Список самых высоких зданий</h3>
+  <div class="container">
+
+    <div class="block">
+      <p>Значения по оси OX</p>
+      <input type="radio" id="city" name="axisX" value="Страна">
+      <label for="city">Страна</label><br>
+      <input type="radio" id="year" name="axisX" value="Год">
+      <label for="year">Год</label>
+    </div>
+
+    <div class="block">
+      <p>Значения по оси OY</p>
+      <input type="checkbox" id="min_OY">
+        <label for="min_OY" id="heck_minOY">
+            Минимальные значения
+      </label><br>
+      <input type="checkbox" id="max_OY">
+        <label for="max_OY" id="heck_maxOY">
+            Максимальные значения
+      </label>
+    </div>
+
+    <div class="block">
+      <p>Тип графика</p>
+      <select id="selectGraph">
+        <option value="pointMap">Точечная карта</option>
+        <option value="histogram">Гистограмма</option>
+        <option value="line">График</option>
+      </select>
+    </div>
+
+    <div class="block">
+      <button id="toggleTableBtn">Скрыть таблицу</button><br>
+      <p></p>
+      <button id="toggleBuildTableBtn">Построить</button>
+    </div>
+
+  </div>
+  
+  <table id="build"> </table>
+  <svg></svg>
+</body>
+</html>
