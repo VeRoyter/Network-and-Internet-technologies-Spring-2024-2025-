@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <title> Трансформация и анимация</title>
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="http://d3js.org/d3.v7.min.js"> </script>
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/image.js"></script>
+    <script src="JavaScript/path.js"></script>
+  </head>
+  <body>   
+    <form id="setting">
+      <div class="container"> 
+        <div class="block">
+          <p>Координаты рисунка<br>
+            <label for="cx">x: </label>
+            <input type="number" id="cx" value="300" max="600" min="0"> <br>
+            <label for="cy">y: </label>
+            <input type="number" id="cy" value="300" max="600" min="0">
+          </p>
+        </div>
+        <div class="block">
+          <p>Масштаб<br>
+            <label for="mx">по x: </label>
+            <input type="number" id="mx" value="1.5" step="0.1"><br>
+            <label for="my">по y: </label>
+            <input type="number" id="my" value="1.5" step="0.1">
+          </p>
+        </div>
+        <div class="block">
+          <p>Поворот<br>
+            <label for="rotate">Угол: </label>
+            <input type="number" id="rotate" value="45">
+          </p>
+        </div>
+        <div class="block">
+          <p>
+            <input 
+              type="button"
+              value="Нарисовать"
+              onclick="draw(setting)">
+          </p>
+          <p>
+              <input 
+                type="button"
+                value="Отчистить"
+                onclick="clearSVG()">
+          </p>
+        </div> 
+        <div class="block">
+          <p>
+            <input 
+              type="checkbox" 
+              id="setting_animateCheckbox"
+            > 
+            <label for="setting_animateCheckbox" >
+                Включить анимацию?
+            </label>
+          </p>
+        </div>
+      </div>
+    </form>
+
+    <form id="improveSetting">
+      <div class="container"> 
+        <div class="block" id="element_direction">
+          <p>Координаты рисунка<br>
+            <label for="cx">x: </label>
+            <input type="number" id="cx" value="300" max="600" min="0"> 
+            <label for="cx_finish">до </label>
+            <input type="number" id="cx_finish" value="500" max="600" min="0"><br>
+            <label for="cy">y: </label>
+            <input type="number" id="cy" value="300" max="600" min="0">
+            <label for="cy_finish">до </label>
+            <input type="number" id="cy_finish" value="500" max="600" min="0">
+          </p>
+        </div>
+        <div class="block" id="element_way">
+          <p>Пути перемещения <br>
+            <select>
+              <option value="0">Буквой «Г»</option>
+              <option value="1">По кругу</option>
+              <option value="2">Восьмёрка</option>
+            </select>
+          </p>
+        </div>
+        <div class="block">
+          <p>Масштаб<br>
+            <label for="mx">по x: </label>
+            <input type="number" id="mx" value="1" step="0.1">
+            <label for="mx_finish">до </label>
+            <input type="number" id="mx_finish" value="1.5" step="0.1"> <br>
+            <label for="my">по y: </label>
+            <input type="number" id="my" value="1" step="0.1">
+            <label for="my_finish">до </label>
+            <input type="number" id="my_finish" value="1.5" step="0.1">
+          </p>
+        </div>
+        <div class="block">
+          <p>Поворот<br>
+            <label for="start_rotate">Угол: </label>
+            <input type="number" id="start_rotate" value="0">
+            <label for="finish_rotate">до </label>
+            <input type="number" id="finish_rotate" value="45">
+            
+          </p>
+        </div>
+        <div class="block">
+          <p>
+              <input 
+                type="button"
+                value="Отчистить"
+                onclick="clearSVG()">
+          </p>
+        </div> 
+        <div class="block">
+
+          <p>
+            <input
+              type="checkbox"
+              id="improveSetting_animateCheckbox" 
+            >
+            <label for="improveSetting_animateCheckbox">
+              Включить анимацию?
+            </label>
+          </p>
+
+          <input type="checkbox" id="improveSetting_way">
+          <label for="improveSetting_way" id="tcheck">
+            Перемещение вдоль пути?
+          </label><br>
+
+          <p>Тип анимации:
+              <select id="easeType">
+                  <option value="linear">Linear</option>
+                  <option value="elastic">Elastic</option>
+                  <option value="bounce">Bounce</option>
+              </select>
+          </p>
+
+          <p>
+            <input type="button" value="Анимировать" onclick="runAnimation(improveSetting)"> 
+          </p>
+
+        </div>
+      </div>
+    </form>
+    
+    <svg width="800" height="600" viewBox="0 0 800 600" style="overflow: visible"></svg>
+
+  </body>
+</html>
