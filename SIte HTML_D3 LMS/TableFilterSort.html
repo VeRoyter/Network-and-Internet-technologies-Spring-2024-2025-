@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    
+    <title>
+      Города мира
+    </title>
+
+    <link rel="stylesheet" href="CSS/style.css">
+    <script src="JavaScript/data.js"></script>
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/table_d3.js"></script>
+    <script src="JavaScript/table.js"></script>
+    <script src="JavaScript/filter.js"></script>
+    <script src="JavaScript/sort.js"></script>
+    <script src="JavaScript/chart.js"></script>
+    <script src="http://d3js.org/d3.v7.min.js"></script>
+  </head>
+  <body>
+    <a href="index.html"><b>Грода</b></a><br>
+    <a href="Table.html"><b>Список городов мира</b></a>
+    <hr>
+
+    <form id="filter" class="container">
+      <div class="block">
+      <p>
+        <label for="city">Название города:</label>
+        <input type="text" id="city">
+      </p>
+      <p>
+        <label for="country">Страна:</label>
+        <input type="text" id="country">
+      </p>
+      <p>
+        <label for="populationFrom">Население: </label>
+        от <input type="number" id="populationFrom"> 
+        до <input type="number" id="populationTo">
+      </p>
+      <p>
+        <label for="salaryFrom">Средний заработок: </label>
+        от <input type="number" id="salaryFrom"> 
+        до <input type="number" id="salaryTo">
+      </p>
+      <p>
+        <label for="priceFrom">Средняя цена квартиры: </label>
+        от <input type="number" id="priceFrom"> 
+        до <input type="number" id="priceTo">
+      </p>
+      </div>
+      <div class="block">
+        <input 
+          type="button" 
+          value="Найти" 
+          onclick="filterTable(cities, 'list', document.getElementById('filter'))"
+        > <br> <p></p>
+        <input 
+          type="button"
+          value="Очистить фильтры"
+          onclick="clearFilter('list', cities, document.getElementById('filter'))"
+        >
+      </div>
+    </form>
+
+    <form id="sort" class="container">
+      <div class="block">
+      <p> Сортировать по</p>
+      <p>
+        <select id="fieldsFirst">
+        </select> 
+        по убыванию? <input  type="checkbox"  id="fieldsFirstDesc">
+      </p>
+      <p> 
+        <select id="fieldsSecond">
+        </select> 
+        по убыванию? <input  type="checkbox"  id="fieldsSecondDesc">
+      </p>
+      <p> 
+        <select id="fieldsThird">
+        </select> 
+        по убыванию? <input type="checkbox" id="fieldsThirdDesc">
+      </p>
+      </div>
+      <div class="block">
+      <input 
+        type="button" 
+        value="Сортировать" 
+        onclick="sortTable('list', document.getElementById('sort'))"
+      > <br><p></p>
+      <input
+        type="button"
+        value="Сбросить сортировку"
+        onclick="resetSort(document.getElementById('sort')), filterTable(cities, 'list', document.getElementById('filter')) "
+      >
+      </div>
+    </form>   
+    
+    <div class = "container">
+      <div class="block">
+      <p>Значения по оси OX</p>
+      <input type="radio" id="axisXCountry" name="axisX" value="Страна">
+      <label for="axisXCountry">Страна</label><br>
+      <input type="radio" id="axisXPopulation" name="axisX" value="Население">
+      <label for="axisXPopulation">Население</label>
+      </div>
+
+      <div class="block">
+        <p>Значения по оси OY</p>
+        <input type="checkbox" id="min_OY">
+          <label for="min_OY" id="heck_minOY">
+              Минимальные значения
+        </label><br>
+        <input type="checkbox" id="max_OY">
+          <label for="max_OY" id="heck_maxOY">
+              Максимальные значения
+        </label>
+      </div>
+
+      <div class="block">
+        <p>Тип графика</p>
+        <select id="selectGraph">
+          <option value="pointMap">Точечная карта</option>
+          <option value="histogram">Гистограмма</option>
+          <option value="line">Линейный график</option>
+        </select>
+      </div>
+
+      <div class="block">
+        <button id="toggleTableBtn">Скрыть таблицу</button><br>
+        <p></p>
+        <button id="toggleBuildTableBtn">Построить</button>
+      </div>
+    </div>
+
+    <div id="chart-container">
+      <svg width="800" height="500"></svg>
+       <!-- <svg></svg> -->
+    </div>
+    <table id="list"></table>
+
+<script>
+    createTable(data, 'list');
+</script>
+
+  </body>
+</html>
