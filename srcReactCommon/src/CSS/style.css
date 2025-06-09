@@ -1,0 +1,35 @@
+.container {
+    /* max-width: 2000px; Максимальная ширина контейнера */
+    display: flex; /* Используем flexbox для выравнивания внутренних блоков */
+    /* justify-content: flex-end; Это свойство выравнивает блоки к концу контейнера (вправо) */
+}
+
+.block {
+    margin: 10px; /* Добавьте отступы, если это необходимо */
+    padding: 10px; /* Добавьте внутренний отступ, если это необходимо */
+    border: 1px solid black; /* Добавьте границы для видимости блоков */
+}
+
+/* svg {
+    width: 800px;
+    height: 400px;
+}
+svg text {
+    font: 8px Verdana;
+}
+svg path, line {
+    fill: none;
+    stroke: #333333;
+    width: 1px;
+} */
+.hiddenTable {
+    display: none;
+}
+#chart-container {
+    margin: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+.hiddenTable {
+    display: none;
+}
