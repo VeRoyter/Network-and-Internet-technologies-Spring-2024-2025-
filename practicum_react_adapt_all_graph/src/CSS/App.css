@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+table {
+   border-collapse: collapse; 
+   width: 100%; }  
+th, td { 
+  border: 1px solid black; 
+  padding: 8px; 
+  text-align: left; 
+}  
+
+.show{
+  visibility: visible;
+}
+.hide{
+  visibility: collapse ;
+}
+
+.pagination {
+  margin-top: 10px;
+}
+
+span {
+  margin-top: 10px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.activePage{
+  color: blue;
+}
+
+.sort-controls {
+    margin: 20px 0;
+}
+
+.sort-controls select {
+    margin-right: 10px;
+}
+
+.sort-controls button {
+    margin-top: 10px;
+}
+
+.wrong{
+  background-color: red;
+}
+
+.correct{
+  background-color: white;
+}
